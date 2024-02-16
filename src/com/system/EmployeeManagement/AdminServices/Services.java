@@ -1,6 +1,7 @@
 package com.system.EmployeeManagement.AdminServices;
 import java.util.*;
 public class Services {
+<<<<<<< HEAD
 public void login()
 {
     Scanner sc=new Scanner(System.in);
@@ -24,4 +25,8 @@ public void SelectRole(int role)
         S
     }
 } 
+=======
+
+    
+>>>>>>> 2d74bfd1f167b3f08c63c53490cfae39bb642731
 }
