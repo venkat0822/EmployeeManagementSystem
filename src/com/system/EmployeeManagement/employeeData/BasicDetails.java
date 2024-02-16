@@ -1,10 +1,21 @@
 package com.system.EmployeeManagement.employeeData;
-
 public class BasicDetails {
 
 	private String empId,empName,empCurrentCompany,empPreviousCompany;
 	private int salary,age;
-	public String getEmpId() {
+    private AddressDetails addressDetails;
+    
+	public BasicDetails(String empId, String empName, String empCurrentCompany, String empPreviousCompany, int salary,
+            int age, AddressDetails addressDetails) {
+        this.empId = empId;
+        this.empName = empName;
+        this.empCurrentCompany = empCurrentCompany;
+        this.empPreviousCompany = empPreviousCompany;
+        this.salary = salary;
+        this.age = age;
+        this.addressDetails=addressDetails;
+    }
+    public String getEmpId() {
 		return empId;
 	}
 	public void setEmpId(String empId) {
