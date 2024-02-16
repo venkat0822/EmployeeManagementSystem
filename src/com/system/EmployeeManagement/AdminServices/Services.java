@@ -1,25 +1,13 @@
 package com.system.EmployeeManagement.AdminServices;
 import java.util.*;
-<<<<<<< HEAD
-public class Services {
-Scanner sc=new Scanner(System.in);
-public void login()
-{
-    String name,password;
-    System.out.println("Enter your admin Details..");
-    System.out.println("enter your Admin Name");
-    name=sc.next();
-    System.out.println("Enter your Password");
-    password=sc.next();
-}
-
-=======
 
 import com.system.EmployeeManagement.AdminData.AdminDetails;
+import com.system.EmployeeManagement.employeeData.BasicDetails;
 public class Services {
 
     public LinkedList<AdminDetails> adList = AdminDetails.returnList();
     AdminServices admService = new AdminServices();
+    BasicDetails basic;
     Scanner sc=new Scanner(System.in);
     public void login(){
 
@@ -42,7 +30,6 @@ public class Services {
 			break;
         }
 }
->>>>>>> 805cb26c1cfa6b317ed6980ee98400297c3b56a5
 public void SelectRole(String role)
 {
     System.out.println("Enter your choice");
@@ -50,46 +37,85 @@ public void SelectRole(String role)
     {
         System.out.println("Enter your choice made up with the Employee Details..");
         System.out.println("1.Add Employee\n2.Update Employee\n3.View Employee\n4.View All Employee\n5.Sort Employee");
+        System.out.println("Enter a choice(1/2/3/4/5): ");
         switch(sc.nextInt())
         {
             case 1:
-                AddEmployee();
+                admService.AddEmployee();
                 break;
             case 2:
-                UpdateEmployee();
+                admService.UpdateEmployee();
                 break;
             case 3:
-                ViewEmployee();
+                System.out.println("1.Search by id\n2.Search by Name");
+                System.out.println("Enter choice(1/2): ");
+                switch (sc.nextInt()) {
+                    case 1:
+                        System.out.println("Enter the id: ");
+                        String id = sc.next();
+                        if(admService.checkifEmployeeExistsById(id))
+                            admService.viewEmployeeById(id);
+                        else
+                            System.out.println("Id does not exist");
+                        break;
+                    case 2:
+                        System.out.println("Enter the Name: ");
+                        String name = sc.next();
+                        if(admService.CheckifEmployeeExistsByName(name))
+                            admService.viewEmployeeByName(name);
+                        else
+                            System.out.println("Name does not exist");
+                        break;
+                    default:
+                        System.out.println("Enter a valid choice !");
+                }
                 break;
             case 4:
-                ViewAllEmployee();
+                admService.viewAllEmployee();
                 break;
             case 5:
-                SortEmployee();
+                admService.SortEmployee();
                 break;
             default :
-                 System.out.println("Please Enter Valid options");
-                 break;
+                System.out.println("Please Enter Valid options");
         }
     }
-    else if(role.equals())
+    else if(role.equals("ADMIN_VIEW"))
     {
        System.out.println("1.ViewEmployee\n2.ViewAllEmployee");
        switch(sc.nextInt())
        {
         case 1:
-            ViewEmployee();
-                break;
+            System.out.println("1.Search by id\n2.Search by Name");
+            System.out.println("Enter choice(1/2): ");
+            switch (sc.nextInt()) {
+                case 1:
+                    System.out.println("Enter the id: ");
+                    String id = sc.next();
+                    if(admService.checkifEmployeeExistsById(id))
+                        admService.viewEmployeeById(id);
+                    else
+                        System.out.println("Id does not exist");
+                    break;
+                case 2:
+                    System.out.println("Enter the Name: ");
+                    String name = sc.next();
+                    if(admService.CheckifEmployeeExistsByName(name))
+                        admService.viewEmployeeByName(name);
+                    else
+                        System.out.println("Name does not exist");
+                    break;
+                default:
+                    System.out.println("Enter a valid choice !");
+            }
+            break;
         case 2:
-                ViewAllEmployee();
-                break;
+            admService.viewAllEmployee();
+            break;
         default :
-
-       }
-       else
-       {
-        System.out.println("UnAuthorized person"); 
+            System.out.println("Enter a valid choice !!");
        }
     }
-} 
+    else
+        System.out.println("UnAuthorized person"); 
 }

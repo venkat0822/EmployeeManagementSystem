@@ -3,6 +3,18 @@ package com.system.EmployeeManagement.employeeData;
 public class AddressDetails {
 
     private int doorNo,pinCode;
+
+    public AddressDetails(int doorNo, int pinCode, String street, String city, String state, String country) {
+        this.doorNo = doorNo;
+        this.pinCode = pinCode;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+    }
+    public AddressDetails(int doorNo2, String city2, String state2, String country2, int pinCode2) {
+        //TODO Auto-generated constructor stub
+    }
     private String street,city,state,country;
 	public int getDoorNo() {
 		return doorNo;

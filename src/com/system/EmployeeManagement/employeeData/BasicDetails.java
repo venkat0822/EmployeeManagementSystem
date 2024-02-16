@@ -50,6 +50,12 @@ public class BasicDetails {
 	}
 	public void setAge(int age) {
 		this.age = age;
-	}  
-
+	}
+    public AddressDetails getAddressDetails() {
+        return addressDetails;
+    }
+    public void setAddressDetails(AddressDetails addressDetails) {
+        this.addressDetails = addressDetails;
+    }  
+    
 }
