@@ -46,6 +46,4 @@ public class AdminDetails {
 		this.adminRole = adminRole;
 	}
 
-	
-
 }
