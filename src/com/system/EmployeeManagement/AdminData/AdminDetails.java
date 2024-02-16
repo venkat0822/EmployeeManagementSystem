@@ -58,4 +58,9 @@ public class AdminDetails {
 		this.adminRole = adminRole;
 	}
 
+	public static LinkedList<AdminDetails> returnList(){
+		
+		return adminList;
+	}
+
 }
