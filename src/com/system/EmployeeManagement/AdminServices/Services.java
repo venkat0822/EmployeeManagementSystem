@@ -1,10 +1,27 @@
 package com.system.EmployeeManagement.AdminServices;
-
+import java.util.*;
 public class Services {
-<<<<<<< HEAD
-       
-=======
+public void login()
+{
+    Scanner sc=new Scanner(System.in);
+    String name,password;
+    System.out.println("Enter your admin Details..");
+    Syste.out.println("enter your Admin Name");
+    name=sc.next();
+    System.out.println("Enter your Password");
+    password=sc.next();
+    AdminAuthenticate(name,password);
+}
+public boolean AdminAuthenticate(String name,String password)
+{
 
-    
->>>>>>> 26421a9d3af391bba75c2a71dcc3e74f60921ed3
+}
+public void SelectRole(int role)
+{
+    if(role==1)
+    {
+        System.out.println("Enter your choice made up with the Employee Details..");
+        S
+    }
+} 
 }
