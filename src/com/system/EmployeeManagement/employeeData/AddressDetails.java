@@ -4,6 +4,8 @@ public class AddressDetails {
 
     private int doorNo,pinCode;
 
+    public AddressDetails(int doorNo2, String city2, String state2, String country2, int pinCode2) {
+    }
     public AddressDetails(int doorNo, int pinCode, String street, String city, String state, String country) {
         this.doorNo = doorNo;
         this.pinCode = pinCode;
@@ -12,9 +14,7 @@ public class AddressDetails {
         this.state = state;
         this.country = country;
     }
-    public AddressDetails(int doorNo2, String city2, String state2, String country2, int pinCode2) {
-        //TODO Auto-generated constructor stub
-    }
+    
     private String street,city,state,country;
 	public int getDoorNo() {
 		return doorNo;
@@ -25,8 +25,8 @@ public class AddressDetails {
 	public int getPinCode() {
 		return pinCode;
 	}
-	public void setPinCode(int pinCode) {
-		this.pinCode = pinCode;
+	public void setPinCode(int pinCode2) {
+		this.pinCode = pinCode2;
 	}
 	public String getStreet() {
 		return street;

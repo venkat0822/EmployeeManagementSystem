@@ -1,4 +1,6 @@
 package com.system.EmployeeManagement.AdminServices;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -8,19 +10,17 @@ import com.system.EmployeeManagement.employeeData.BasicDetails;
 
 public class AdminServices {
     public LinkedList<AdminDetails> adList = AdminDetails.returnList();
-<<<<<<< HEAD
-    public LinkedList<BasicDetails> empDetails = new LinkedList<>();
-=======
-     public LinkedList<BasicDetails> empDetails = new LinkedList<>();
->>>>>>> 7abf4fe0c1cfef0f0a811c60970f3594feef4828
+
+    public static LinkedList<BasicDetails> empDetails = new LinkedList<>();
+
     Scanner sc=new Scanner(System.in);
     public void AddEmployee()
     {
-        String empId,empName,empCurrentCompany,empPreviousCompany,street,city,state,country,upName,upID,upEmpCurrentCompany,upEmpPreviousCompany,upStreet,upCity,upState,upCountry;
-	    int salary,age, doorNo,pinCode,upSalary,upAge,upDoorNo,upPinCode;
+        String empName,empCurrentCompany,empPreviousCompany,street,city,state,country;
+	    int salary,age, doorNo,pinCode,empId;
         System.out.println("Enter  Basic Details.....");
         System.out.println("Enter Employee ID");
-        empId=sc.next();
+        empId=sc.nextInt();
         System.out.println("Enter Employee Name");
         empName=sc.next();
         System.out.println("Enter Employee Salary");
@@ -31,68 +31,73 @@ public class AdminServices {
         empCurrentCompany=sc.next();
         System.out.println("Enter Employee Previous Company");
         empPreviousCompany=sc.next();
-        System.out.println("Enter Address Details...")
+        System.out.println("Enter Address Details...");
         System.out.println("Enter Door No");
         doorNo=sc.nextInt();
-         System.out.println("Enter Street Name");
-        street=sc.next();
-         System.out.println("Enter City Name");
-        city=sc.next();
-         System.out.println("Enter State Name");
-        state=sc.next();
-         System.out.println("Enter Country Name");
-         country=sc.next();
-         System.out.println("Enter Pin Code");
-         pinCode=sc.nextInt();
-<<<<<<< HEAD
-        AddressDetails ad =new AddressDetails(doorNo,city,state,country,pinCode);
+        sc.nextLine();
+        System.out.println("Enter Street Name");
+        street=sc.nextLine();
+        System.out.println("Enter City Name");
+        city=sc.nextLine();
+        System.out.println("Enter State Name");
+        state=sc.nextLine();
+        System.out.println("Enter Country Name");
+        country=sc.nextLine();
+        System.out.println("Enter Pin Code");
+        pinCode=sc.nextInt();
+
+        AddressDetails ad =new AddressDetails(doorNo,pinCode,street,city,state,country);
         BasicDetails basic=new BasicDetails(empId,empName,empCurrentCompany,empPreviousCompany,salary,
            age, ad) ;
 
         empDetails.add(basic);
     }
-=======
-        BasicDetails basic=new BasicDetails(empId,empName,empCurrentCompany,empPreviousCompany,salary,
-           age, new AddressDetails(doorNo,city,state,country,pinCode) );
-    }
+
   public void UpdateEmployee()
   {
+    String upEmpCurrentCompany,upEmpPreviousCompany,upStreet,upCity,upState,upCountry;
+	int upSalary,upAge,upDoorNo,upPinCode,upID;
     System.out.println("Enter Employee ID");
-     upID=sc.next();
+    upID=sc.nextInt();
     System.out.println("Enter the details Which to be Update....");
     System.out.println("1.Basic Details\n2.Address Details....");
+    System.out.println("Enter the choice(1/2): ");
     switch(sc.nextInt())
     {
         case 1:
             System.out.println("Enter which basic detail to be Updated..");
             System.out.println("1.Age\n2.Salary\n3.Current Company\n4.previous Company");
+            System.out.println("Enter the choice(1/2/3/4): ");
             switch(sc.nextInt())
             {
                 case 1:
-                System.out.println("Enter the Age to be Update...");
-                upAge=sc.nextInt();
-                UpdateAge(upAge);
-                break;
+                    System.out.println("Enter the Age to be Update...");
+                    upAge=sc.nextInt();
+                    UpdateAge(upAge,upID);
+                    break;
                 case 2:
-                System.out.println("Enter the Salary to be Update...");
-                upSalary=sc.nextInt();
-                UpdateSalary(upSalary);
-                break;
+                    System.out.println("Enter the Salary to be Update...");
+                    upSalary=sc.nextInt();
+                    UpdateSalary(upSalary,upID);
+                    break;
                 case 3:
-                System.out.println("Enter the Current Company to be Update...");
-                upEmpCurrentCompany=sc.next();
-                UpdateEmpCurrentCompany(upEmpCurrentCompany);
-                break;
+                    System.out.println("Enter the Current Company to be Update...");
+                    upEmpCurrentCompany=sc.next();
+                    UpdateEmpCurrentCompany(upEmpCurrentCompany,upID);
+                    break;
                 case 4:
-                System.out.println("Enter the previous Company to be Update...");
-                upEmpPreviousCompany=sc.next();
-                UpdateEmpPPreviousCompany(upEmpPreviousCompany);
-                break;
+                    System.out.println("Enter the previous Company to be Update...");
+                    upEmpPreviousCompany=sc.next();
+                    UpdateEmpPPreviousCompany(upEmpPreviousCompany,upID);
+                    break;
+                default:
+                    System.out.println("Enter valid choice!");
             }
             break;
             case 2:
                 System.out.println("Enter which Address detail to be Update..");
                 System.out.println("1.DoorNo\n2.Street\n3.City\n4.State\n5.Country\n6.PinCode");
+                System.out.println("Enter the choice(1/2/3/4/5/6): ");
                 switch(sc.nextInt())
                 {
                     case 1:
@@ -102,126 +107,130 @@ public class AdminServices {
                         break;
                     case 2:
                         System.out.println("Enter the Street Name to be Update..");
-                        upStreet=sc.next();
+                        upStreet=sc.nextLine();
                         UpdateStreet(upStreet,upID);
                         break;
                     case 3:
                          System.out.println("Enter the City to be Update..");
-                         upCity=sc.next();
+                         upCity=sc.nextLine();
                          UpdateCity( upCity,upID);
                          break;
                     case 4:
                          System.out.println("Enter the State to be Update..");
-                         upState=sc.next();
+                         upState=sc.nextLine();
                          UpdateState(upState,upID);
                          break;
                     case 5:
                          System.out.println("Enter the Country to be Update..");
-                         upCountry=sc.next();
-                         UpdateCountry(upCountry),upID;
+                         upCountry=sc.nextLine();
+                         UpdateCountry(upCountry,upID);
                          break;
                     case 6:
                         System.out.println("Enter the pinCode to be Update..");
                         upPinCode=sc.nextInt();
-                        UpdatePinCode( upPinCode),upID;
+                        UpdatePinCode(upPinCode,upID);
                         break;
-                  }
-                  break;
+                    default:
+                        System.out.println("Enter a valid option for Updating!!");
+                }
+                break;
+            default:
+                System.out.println("Enter a valid option !!");
+            }
     }
-    public void UpdateAge(int age,String empId)
+    public void UpdateAge(int age,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
+            if(basics.getEmpId()==empId){
                 basics.setAge(age);
             }
         }
     }
-    public void UpdateSalary(int salary,String empId)
+    public void UpdateSalary(int salary,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
+            if(basics.getEmpId()==empId){
                 basics.setSalary(salary);
             }
         }
     }
-    public void UpdateEmpCurrentCompany(String empCurrentCompany,String empId)
+    public void UpdateEmpCurrentCompany(String empCurrentCompany,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
+            if(basics.getEmpId()==empId){
                 basics.setEmpCurrentCompany(empCurrentCompany);
             }
         }
     }
-    public void UpdateEmpPPreviousCompany(String empPreviousCompany,String empId)
+    public void UpdateEmpPPreviousCompany(String empPreviousCompany,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
-                basics.setEmpPreviousCompany(empCurrentCompany);
+            if(basics.getEmpId()==empId){
+                basics.setEmpPreviousCompany(empPreviousCompany);
             }
         }
     }
-     public void UpdateDoorNo(String doorNo,String empId)
+     public void UpdateDoorNo(int doorNo,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
-                basics.setDoorNo(doorNo);
+            if(basics.getEmpId()==empId){
+                basics.getAddressDetails().setDoorNo(doorNo);
             }
         }
     }
-     public void UpdateStreet(String street,String empId)
+     public void UpdateStreet(String street,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
-                basics.setStreet(street);
+            if(basics.getEmpId()==empId){
+                basics.getAddressDetails().setStreet(street);
             }
         }
     }
-     public void UpdateCity(String city,String empId)
+     public void UpdateCity(String city,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
-                basics.setCity(city);
+            if(basics.getEmpId()==empId){
+                basics.getAddressDetails().setCity(city);
             }
         }
     }
-     public void UpdateState(String state,String empId)
+     public void UpdateState(String state,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
-                basics.setState(state);
+            if(basics.getEmpId()==empId){
+                basics.getAddressDetails().setState(state);
             }
         }
     }
-     public void UpdateCountry(String country,String empId)
+     public void UpdateCountry(String country,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
-                basics.setCountry(country);
+            if(basics.getEmpId()==empId){
+                basics.getAddressDetails().setCountry(country);;;
             }
         }
     }
-     public void UpdatePinCode(String pinCode,String empId)
+     public void UpdatePinCode(int pinCode,int empId)
     {
         for( BasicDetails basics : empDetails ){
 
-            if(basics.getEmpId().equals(empId)){
-                basics.setPinCode(pinCode);
+            if(basics.getEmpId()==empId){
+                basics.getAddressDetails().setPinCode(pinCode);
             }
         }
     }
 
 
-  }
->>>>>>> 7abf4fe0c1cfef0f0a811c60970f3594feef4828
+  
     public AdminDetails returnAdmin(String userName) {
 			
         for(AdminDetails admin: adList) {
@@ -230,7 +239,6 @@ public class AdminServices {
         }
         return null;
     }
-
     public boolean CheckPass(String usname, String pass) {
 
 		for(AdminDetails admin: adList) {
@@ -261,10 +269,10 @@ public class AdminServices {
         }
     }
 
-    public boolean checkifEmployeeExistsById(String id){
+    public boolean checkifEmployeeExistsById(int id){
         
         for(BasicDetails basic: empDetails) {
-			if(basic.getEmpId().equals(id))
+			if(basic.getEmpId()==id)
 				return true;
 		}
 		return false;  
@@ -278,11 +286,11 @@ public class AdminServices {
 		return false;  
     }
 
-    public void viewEmployeeById(String id){
+    public void viewEmployeeById(int id){
 
         for(BasicDetails basic: empDetails){
 
-            if(basic.getEmpId().equals(id)){
+            if(basic.getEmpId()==id){
                 
                 System.out.println("The id: "+basic.getEmpId());
                 System.out.println("The Name: "+basic.getEmpName());
@@ -323,10 +331,10 @@ public class AdminServices {
             }
         }
     }
-
-<<<<<<< HEAD
-=======
-    
->>>>>>> 7abf4fe0c1cfef0f0a811c60970f3594feef4828
-
+    public void SortEmployee() {
+		
+    	Comparator<BasicDetails> sortById = Comparator.comparingInt(BasicDetails::getEmpId);
+    	Collections.sort(empDetails,sortById);
+    	viewAllEmployee();
+    }
 }

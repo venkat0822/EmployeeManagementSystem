@@ -1,11 +1,11 @@
 package com.system.EmployeeManagement.employeeData;
 public class BasicDetails {
 
-	private String empId,empName,empCurrentCompany,empPreviousCompany;
-	private int salary,age;
+	private String empName,empCurrentCompany,empPreviousCompany;
+	private int salary,age,empId;
     private AddressDetails addressDetails;
     
-	public BasicDetails(String empId, String empName, String empCurrentCompany, String empPreviousCompany, int salary,
+    public BasicDetails(int empId, String empName, String empCurrentCompany, String empPreviousCompany, int salary,
             int age, AddressDetails addressDetails) {
         this.empId = empId;
         this.empName = empName;
@@ -15,10 +15,10 @@ public class BasicDetails {
         this.age = age;
         this.addressDetails=addressDetails;
     }
-    public String getEmpId() {
+    public int getEmpId() {
 		return empId;
 	}
-	public void setEmpId(String empId) {
+	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
 	public String getEmpName() {

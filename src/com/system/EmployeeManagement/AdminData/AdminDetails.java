@@ -7,22 +7,27 @@ public class AdminDetails {
 	private int adminId;
 	private String adminName;
 	private String adminPassword;
-	String adminRole;
+	private String adminRole;
+	
+	
+	public static LinkedList<AdminDetails> adminList = new LinkedList<>();
+	static{
 
-	public static LinkedList<AdminDetails> adminList;
-	static
-	{
-		adminList = new LinkedList<>();
-		adminList.add(new AdminDetails(101, "Admin1", "Admin@1", "ADMIN_ALL"));
-		adminList.add(new AdminDetails(102, "Admin2", "Admin@2", "ADMIN_VIEW"));
-		adminList.add(new AdminDetails(103, "Admin3", "Admin@3", "ADMIN_VIEW"));
+		adminList.add(new AdminDetails(101,"admin1", "admin@1","ADMIN_ALL"));
+		adminList.add(new AdminDetails(102,"admin2", "admin@2","ADMIN_VIEW"));
+		adminList.add(new AdminDetails(103,"admin3", "admin@3","ADMIN_VIEW"));
 	}
+	
 
 	public AdminDetails(int adminId, String adminName, String adminPassword, String adminRole) {
 		this.adminId = adminId;
 		this.adminName = adminName;
 		this.adminPassword = adminPassword;
 		this.adminRole = adminRole;
+	}
+	
+	public AdminDetails() {
+		
 	}
 
 	public int getAdminId() {
@@ -58,9 +63,9 @@ public class AdminDetails {
 		this.adminRole = adminRole;
 	}
 
-	public static LinkedList<AdminDetails> returnList(){
-		
+    public static LinkedList<AdminDetails> returnList() {
+        
 		return adminList;
-	}
+    }
 
 }
